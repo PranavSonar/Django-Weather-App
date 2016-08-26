@@ -6,7 +6,7 @@ import logging
 
 def fetch_data():
 
-    api_token=''
+    api_token='6f30855c6da0b95b'
     url='http://api.wunderground.com/api/'+api_token+'/conditions/q/CA/San_Francisco.json'
     r=requests.get(url).json()
     data=r['current_observation']
@@ -22,7 +22,7 @@ def fetch_data():
 
     #open db
     try:
-        conn = psycopg2.connect(dbname='weather', user='',host='localhost',password='')
+        conn = psycopg2.connect(dbname='weather', user='postgres',host='localhost',password='1234')
         print ('Opened DB Successfully')
     except:
         print (datetime.now(),'Unable to connect DB')
@@ -32,7 +32,7 @@ def fetch_data():
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
     #write data to DB
-    cur.execute("""INSERT INTO station_reading(location,weather,wind_str,temp,humidity,precip,icon_url,observation_time)
+    cur.except("""INSERT INTO station_reading(location,weather,wind_str,temp,humidity,precip,icon_url,observation_time)
               VALUES(%s,%s,%s,%s,%s,%s,%s,%s)""",(location,weather,wind_str,temp,humidity,precip,
                                                  icon_url,observation_time))
 

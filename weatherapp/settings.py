@@ -25,7 +25,7 @@ SECRET_KEY = '@-bay!yow()l$6=zfd&mt!ni+bosrmjvv^mz+^+$yi^*dsg*ed'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [djangoweatherapp.herokuapp.com/]
 
 
 # Application definition
@@ -123,8 +123,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-STATICFILES_DIRS= [
-    os.path.join(BASE_DIR,"static")
-]
+STATIC_ROOT = os.path.join(BASE_DIR,'static)
+STATIC_URL = '/static/'
