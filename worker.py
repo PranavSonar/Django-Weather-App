@@ -6,7 +6,7 @@ import logging
 
 def fetch_data():
 
-    api_token='6f30855c6da0b95b'
+    api_token=''
     url='http://api.wunderground.com/api/'+api_token+'/conditions/q/CA/San_Francisco.json'
     r=requests.get(url).json()
     data=r['current_observation']
